@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://tk.org/schema/custom-ns"
+	targetNamespace="http://tk.org/schema/custom-ns" elementFormDefault="qualified">
+
+<!--
+   <cus:regionService name="asiaRegion">
+		<cus:country name="india" places="bangalore, delhi, mumbai" key="india" />
+		<cus:country name="srilanka" places="colombo, jafna" key="srilanka" />
+	</cus:regionService> 
+ -->
+ 
+	<element name="regionService">
+		<complexType>
+			<sequence>
+				<element name="country" maxOccurs="unbounded">
+					<complexType>
+						<attribute name="name" type="string" use="required" />
+						<attribute name="places" type="string" use="required" />
+						<attribute name="key" type="string" use="required" />
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="name" type="string" use="required" />
+		</complexType>
+	</element>
+</schema>

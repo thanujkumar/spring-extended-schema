@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cus="http://tk.org/schema/custom-ns"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	      http://tk.org/schema/custom-ns http://tk.org/schema/custom-ns.xsd">
+
+	<bean class="org.tk.custom.ns.ex1.CountryService" id="regionService1">
+		<property name="registryName" value="asiaRegion" />
+		<property name="countryRegistry" ref="asiaRegionRegistry" />
+	</bean>
+
+	<bean class="org.tk.custom.ns.ex1.CountryRegistry" id="asiaRegionRegistry">
+		<property name="registry">
+			<map>
+				<entry key="india" value-ref="india" />
+				<entry key="srilanka" value-ref="srilanka" />
+			</map>
+		</property>
+	</bean>
+
+	<bean class="org.tk.custom.ns.ex1.PlacesInCountryImpl" id="india">
+		<property name="places">
+			<list>
+				<value>bangalore</value>
+				<value>delhi</value>
+				<value>mumbai</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="org.tk.custom.ns.ex1.PlacesInCountryImpl" id="srilanka">
+		<property name="places">
+			<list>
+				<value>colombo</value>
+				<value>jafna</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Above can be replaced with custom schema as below, look at org/tk/custom/ns/config/custom-ns-v1.xsd -->
+
+	<cus:regionService name="asiaRegion">
+		<cus:country name="india" places="_bangalore, _delhi, _mumbai" key="india" />
+		<cus:country name="srilanka" places="_colombo, _jafna" key="srilanka" />
+	</cus:regionService>
+
+</beans>
