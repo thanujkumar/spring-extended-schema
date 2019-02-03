@@ -27,6 +27,8 @@ public class TestCustomNS {
 	    for (String key: cusPlacesInCountry.keySet()) {
 			System.out.println(key + "->" + cusPlacesInCountry.get(key).getPlaces());
 		}
+	    
+	    applicationCtx.close();
 	}
 
 }
